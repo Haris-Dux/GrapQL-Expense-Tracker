@@ -18,7 +18,6 @@ import { buildContext } from "graphql-passport";
 import { configurePassport } from "./passport/passport.config.js";
 
 const app = express();
-const __dirname = path.resolve();
 configurePassport();
 app.use(cors({
     credentials:true,
@@ -63,11 +62,12 @@ expressMiddleware(server,{
   context: async ({ req, res }) => buildContext({ req, res }),
 }));
 
-app.use(express.static(path.join(__dirname,"client/dist")));
+const root = path.resolve();
+app.use(express.static(path.join(root, 'dist')));
 
-app.get("*",(req,res) => {
-  res.sendFile(path.join(__dirname,"client/dist","index.html"));
-})
+app.get("*", (req, res) => {
+  res.sendFile(path.join(root, 'dist/index.html'));
+});
 
 await new Promise((resolve) => httpServer.listen({port:4000},resolve));
 
