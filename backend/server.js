@@ -63,10 +63,10 @@ expressMiddleware(server,{
   context: async ({ req, res }) => buildContext({ req, res }),
 }));
 
-app.use(express.static(path.join(__dirname,"frontend/dist")));
+app.use(express.static(path.join(__dirname,"client/dist")));
 
 app.get("*",(req,res) => {
-  res.sendFile(path.join(__dirname,"frontend/dist","index.html"));
+  res.sendFile(path.join(__dirname,"client/dist","index.html"));
 })
 
 await new Promise((resolve) => httpServer.listen({port:4000},resolve));
