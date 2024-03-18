@@ -3,8 +3,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production node --env-file .env backend/server.js",
-    "dev": "NODE_ENV=development nodemon --env-file .env backend/server.js",
+    "start": "set NODE_ENV=production && node --env-file .env backend/server.js",
+    "dev": "set NODE_ENV=development && nodemon --env-file .env backend/server.js",
     "build":"npm install && npm install --prefix client"
   },
   "dependencies": {
